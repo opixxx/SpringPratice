@@ -2,12 +2,12 @@ package SpringStudy.firstspring.service;
 
 import SpringStudy.firstspring.domain.Member;
 import SpringStudy.firstspring.repository.MemberRepository;
-import SpringStudy.firstspring.repository.MemoryMemberRepository;
-import org.springframework.stereotype.Service;
+import jakarta.transaction.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
+
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -18,9 +18,10 @@ public class MemberService {
 
     // 회원가입
     public Long join(Member member) {
-        // 같은 이름이 있는 중복 회원 x
-        validateDuplicateMember(member);
 
+        // 같은 이름이 있는 중복 회원 x
+
+        validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
     }

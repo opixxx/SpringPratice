@@ -1,6 +1,10 @@
 package SpringStudy.firstspring.domain;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Member {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) //mapping
     private Long id;
     private String name;
 
